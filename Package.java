@@ -1,6 +1,7 @@
 
 import static java.lang.System.out;
 import java.util.Scanner;
+import java.io.*;
 
 /**
  * Package class the variables relevant for a package as
@@ -11,7 +12,7 @@ import java.util.Scanner;
  */
 
 
-public abstract class Package
+public abstract class Package implements Serializable, Comparable
 {
 
   private
@@ -94,7 +95,7 @@ public abstract class Package
           // ***MISC FUNCTIONS***
 
 
-          
+
 
   /**
    * This method returns the package order's fields as a string representation.
@@ -113,6 +114,17 @@ public abstract class Package
    *
    */
    abstract void printPackage();
+
+
+ /**
+  * This method defines the compareTo for sorting the objects
+  *
+  */
+  public int compareTo(Object rhs){
+    String rhsTrack = ((Package)rhs).trackNumber;
+    return trackNumber.compareTo(rhsTrack);
+  }
+
 
   /**
    * This method provides a way to compare two package order objects.
